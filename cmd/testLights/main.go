@@ -69,7 +69,7 @@ func (t *testRenderBus) CopyLightsToUint32Buffer(buff []uint32) error {
 	for i := 0; i < 7; i++ {
 		for j := 0; j < 7; j++ {
 			position := (t.increment + i*2 + j) % 256
-			t.colors[i*7+j] = wheelUint32(position)
+			buff[i*7+j] = wheelUint32(position)
 		}
 	}
 	return nil
