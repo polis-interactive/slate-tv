@@ -64,6 +64,14 @@ float noise(float p){
     return mix(rand(fl), rand(fl + 1.0), fc);
 }
 
+vec3 blacken(vec2 uv, float t) {
+    return mix(vec3(1.0), vec3(0.0, 0.0, 1.0), noise(uv, t));
+}
+
+vec3 blacken(vec2 uv, float t, float intensity) {
+    return mix(vec3(1.0), vec3(0.0, 0.0, 1.0), noise(uv, t)) * intensity;
+}
+
 
 void main(void)
 {
@@ -73,8 +81,9 @@ void main(void)
 
     vec2 uv = gl_FragCoord.xy / resolution.xy;
 
+    vec3 color = vec3(0.0);
 
-    vec3 color = vec3(noise(uv,t));
+    // vec3 color = vec3(noise(uv,t));
 
 
     float l = 1.0 / 7.0; // Since the resolution was normalized screen is equal to 1 and we divide it by 7
@@ -93,11 +102,11 @@ void main(void)
     // Draw 7 smaller rectangle
     if (uv.y >= 0.2 && uv.y <= 0.25) {
         if (uv.x >= l*0.0 && uv.x < l*1.0) color = vec3(0, 0, 1); // blue
-        // if (uv.x < l*2.0) color = vec3(0, 0, 0); // black -- don't need it because background is black
+        if (uv.x >= l*1.0 && uv.x < l*2.0) color = blacken(uv, t); // black
         if (uv.x >= l*2.0 && uv.x < l*3.0) color = vec3(1, 0, 1); // pink
-        // if (uv.x > l*3.0 && uv.x < l*4.0) color = vec3(0, 0, 0); // black
+        if (uv.x >= l*3.0 && uv.x < l*4.0) color = blacken(uv, t); // black
         if (uv.x >= l*4.0 && uv.x < l*5.0) color = vec3(0, 1, 1); // light blue
-        // if (uv.x > l*5.0 && uv.x < l*6.0) color = vec3(0, 0, 0); // black
+        if (uv.x >= l*5.0 && uv.x < l*6.0) color = blacken(uv, t); // black
         if (uv.x >= l*6.0 && uv.x < l*7.0) color = vec3(1, 1, 1); // white
     }
 
@@ -114,9 +123,9 @@ void main(void)
             // If we only use uv.x it will start a grayish coloror
             // So we subtract the position of the square to uv.x
             float s = uv.x - l2*2.5;
-            color = vec3(s); // Increment pixel position to get the gradient effect
+            color = blacken(uv, t, s); // Increment pixel position to get the gradient effect
         }
-        //if (uv.x > l2*5.0 && uv.x < l2*6.0) col = vec3(0,0,0); // black
+        if (uv.x > l2*5.0 && uv.x < l2*6.0) color = blacken(uv, t); // black
     }
 
     gl_FragColor = vec4(color, 1.0);
