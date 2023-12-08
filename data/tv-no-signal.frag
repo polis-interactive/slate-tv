@@ -17,6 +17,18 @@ precision highp float;
 uniform float time;
 uniform vec2 resolution;
 
+float noise(vec2 pos, float evolve) {
+
+    // Loop the evolution (over a very long period of time).
+    float e = fract((evolve*0.01));
+
+    // Coordinates
+    float cx  = pos.x*e;
+    float cy  = pos.y*e;
+
+    // Generate a "random" black or white value
+    return fract(23.0*fract(2.0/fract(fract(cx*2.4/cy*23.0+pow(abs(cy/22.4),3.3))*fract(cx*evolve/pow(abs(cy),0.050)))));
+}
 
 
 vec3 rgb2hsb( in vec3 c ){
@@ -59,11 +71,10 @@ void main(void)
     float t = time / 2.0;
 
 
-	vec3 color = vec3(0.0);
+    vec2 uv = gl_FragCoord.xy / resolution.xy;
 
-    vec2 uv_all = gl_FragCoord.xy / resolution.xy;
 
-    vec2 uv = floor(vec2(uv_all.x * 14.0, uv_all.y * 14.0)) / vec2(14.0, 14.0);
+    vec3 color = vec3(noise(uv,t));
 
 
     float l = 1.0 / 7.0; // Since the resolution was normalized screen is equal to 1 and we divide it by 7
