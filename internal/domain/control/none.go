@@ -98,13 +98,14 @@ func (n *noneController) tryRunMainLoop() (err error) {
 			}
 		case _ = <-n.reader:
 			if lastValue == 0.1 {
-				lastValue = 0.5
-			} else if lastValue == 0.5 {
-				lastValue = 0.8
+				lastValue = 0.3
+			} else if lastValue == 0.3 {
+				lastValue = 0.7
+			} else if lastValue == 0.7 {
+				lastValue = 0.9
 			} else {
 				lastValue = 0.1
 			}
-			log.Println(lastValue)
 			n.SetInputValue(0, lastValue)
 		}
 	}

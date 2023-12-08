@@ -36,7 +36,7 @@ func main() {
 		},
 		GraphicsConfig: &application.GraphicsConfig{
 			ShaderFiles: []string{
-				"dvd-bounce",
+				"basic",
 			},
 			ReloadOnUpdate: false,
 			DisplayOutput:  false,

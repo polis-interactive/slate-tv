@@ -66,20 +66,14 @@ func (s *service) HandleInputChange(state *domain.InputState) {
 		return
 	}
 	programCount := float64(len(s.graphics.shaderFiles))
-	log.Println(state.InputValue)
-	log.Println(programCount)
 	if programCount == 1 {
 		return
 	}
 	var programKey graphicsShader.ShaderKey
 	if state.InputValue == 1 {
-		log.Println("1.0?")
 		programKey = graphicsShader.ShaderKey(rune(programCount - 1))
 	} else {
 		selectProgram := int(math.Floor(programCount * state.InputValue))
-		log.Println(programCount * state.InputValue)
-		log.Println(math.Floor(programCount * state.InputValue))
-		log.Println(selectProgram)
 		programKey = graphicsShader.ShaderKey(rune(selectProgram))
 	}
 	err := s.graphics.gs.SetShader(programKey)

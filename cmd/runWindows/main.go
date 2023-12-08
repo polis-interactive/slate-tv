@@ -26,7 +26,7 @@ func main() {
 		},
 		GraphicsConfig: &application.GraphicsConfig{
 			ShaderFiles: []string{
-				"tv-no-signal",
+				"basic",
 			},
 			ReloadOnUpdate: true,
 			DisplayOutput:  true,
