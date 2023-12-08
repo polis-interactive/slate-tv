@@ -7,7 +7,7 @@ import (
 
 const (
 	brightness = 255
-	ledCounts  = 284
+	ledCounts  = 49
 	sleepTime  = 50
 )
 
