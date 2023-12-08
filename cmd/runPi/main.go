@@ -36,8 +36,7 @@ func main() {
 		},
 		GraphicsConfig: &application.GraphicsConfig{
 			ShaderFiles: []string{
-				"checkerboard", "stripe-wheel-spread",
-				"bar-hoppin",
+				"tv-no-signal",
 			},
 			ReloadOnUpdate: false,
 			DisplayOutput:  false,

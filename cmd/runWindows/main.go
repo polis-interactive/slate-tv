@@ -20,15 +20,13 @@ func main() {
 		ControlConfig: &application.ControlConfig{
 			ControlType:    domain.ControlTypes.NONE,
 			InputTolerance: 0.001,
-			GrpcPort:       5000,
 		},
 		WindowConfig: &application.WindowConfig{
 			TileSize: 0,
 		},
 		GraphicsConfig: &application.GraphicsConfig{
 			ShaderFiles: []string{
-				"checkerboard", "stripe-wheel-spread",
-				"bar-hoppin",
+				"tv-no-signal",
 			},
 			ReloadOnUpdate: true,
 			DisplayOutput:  true,
