@@ -1,0 +1,14 @@
+[Unit]
+Description=Big Ass Tiles Snake
+After=multi-user.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/home/pi/bin/script_autostart
+KillSignal=SIGQUIT
+
+[Install]
+WantedBy=big-ass-tiles.target
