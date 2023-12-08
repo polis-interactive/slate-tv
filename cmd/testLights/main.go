@@ -91,7 +91,7 @@ func wheelUint32(pos int) uint32 {
 
 	c := util.Color{
 		R: 0,
-		G: 0,
+		G: 255,
 		B: 255,
 		W: 0,
 	}
