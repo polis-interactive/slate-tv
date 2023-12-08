@@ -139,7 +139,7 @@ void main(void)
 
     uv = uv - center;
     uv = uv *2.0;
-    uv = myPixel(uv-vec2(2.0), vec2(0.01))+vec2(2.0);
+    // uv = myPixel(uv-vec2(2.0), vec2(0.01))+vec2(2.0);
 
     color = rdr(uv, t);
 
