@@ -61,7 +61,7 @@ void main(){
     vec3 color = vec3(0.0);
 
 
-    vec2 uv_grid = floor(vec2(uv.x * 11.0, uv.y * 3.0)) / vec2(11.0, 3.0);
+    vec2 uv_grid = floor(vec2(uv.x * 14.0, uv.y * 14.0)) / vec2(14.0, 14.0);
 
     float pct = -uv_grid.x * 0.5 * 2.0 + noise(time / 4.0 + 32.48 * rand(uv_grid.y)) * 0.2 - pow(sin(uv_grid.y * 3.0 + time / 2.0), 2.0) + time / 10.0;
 

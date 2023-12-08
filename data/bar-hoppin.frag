@@ -61,7 +61,7 @@ void main(){
 
     vec3 color = vec3(0.0);
 
-    float uv_col = floor(uv.x * 11.0) / 11.0;
+    float uv_col = floor(uv.x * 14.0) / 14.0;
 
     float iterations = floor(0.5 * 8.0) + 1.0;
 
