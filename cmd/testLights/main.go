@@ -66,10 +66,10 @@ func (t *testRenderBus) CopyLightsToColorBuffer(buff []util.Color) error {
 }
 
 func (t *testRenderBus) CopyLightsToUint32Buffer(buff []uint32) error {
-	for i := 0; i < 7; i++ {
-		for j := 0; j < 7; j++ {
+	for i := 0; i < 14; i++ {
+		for j := 0; j < 14; j++ {
 			position := (t.increment + i*2 + j) % 256
-			buff[i*7+j] = wheelUint32(position)
+			buff[i*14+j] = wheelUint32(position)
 		}
 	}
 	return nil
@@ -90,8 +90,8 @@ func wheelUint32(pos int) uint32 {
 	//b := 1 - math.Max(min3(kb, 4-kb, 1), 0)
 
 	c := util.Color{
-		R: 255,
-		G: 0,
+		R: 0,
+		G: 255,
 		B: 0,
 		W: 0,
 	}
