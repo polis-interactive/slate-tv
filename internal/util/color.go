@@ -21,7 +21,7 @@ func (c *Color) DimColor(b float64) Color {
 }
 
 func (c *Color) ToBits() uint32 {
-	return uint32(c.W)<<24 | uint32(c.R)<<16 | uint32(c.G)<<8 | uint32(c.B)
+	return uint32(c.W)<<24 | uint32(c.G)<<16 | uint32(c.R)<<8 | uint32(c.B)
 }
 
 func (c *Color) ToSysColor() color.RGBA {
