@@ -80,19 +80,19 @@ func min3(a, b, c float64) float64 {
 }
 
 func wheelUint32(pos int) uint32 {
-	h := math.Floor(float64(pos*360) / 256)
-	kr := math.Mod(5+h*6, 6)
-	kg := math.Mod(3+h*6, 6)
-	kb := math.Mod(1+h*6, 6)
+	//h := math.Floor(float64(pos*360) / 256)
+	//kr := math.Mod(5+h*6, 6)
+	//kg := math.Mod(3+h*6, 6)
+	//kb := math.Mod(1+h*6, 6)
 
-	r := 1 - math.Max(min3(kr, 4-kr, 1), 0)
-	g := 1 - math.Max(min3(kg, 4-kg, 1), 0)
-	b := 1 - math.Max(min3(kb, 4-kb, 1), 0)
+	//r := 1 - math.Max(min3(kr, 4-kr, 1), 0)
+	//g := 1 - math.Max(min3(kg, 4-kg, 1), 0)
+	//b := 1 - math.Max(min3(kb, 4-kb, 1), 0)
 
 	c := util.Color{
-		R: uint8(math.Max(math.Min(math.Floor(r*255), 255), 0)),
-		G: uint8(math.Max(math.Min(math.Floor(g*255), 255), 0)),
-		B: uint8(math.Max(math.Min(math.Floor(b*255), 255), 0)),
+		R: 255,
+		G: 0,
+		B: 0,
 		W: 0,
 	}
 	return c.ToBits()
