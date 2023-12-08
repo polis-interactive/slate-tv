@@ -57,7 +57,7 @@ type testRenderBus struct {
 }
 
 func (t *testRenderBus) GetLightCount() int {
-	return 49
+	return 196
 }
 
 func (t *testRenderBus) CopyLightsToColorBuffer(buff []util.Color) error {
@@ -119,7 +119,7 @@ var _ render.Bus = (*testRenderBus)(nil)
 func main() {
 	conf := &testRenderConfig{}
 	bus := &testRenderBus{
-		colors:    make([]uint32, 49),
+		colors:    make([]uint32, 196),
 		increment: 0,
 	}
 	r, err := render.NewService(conf, bus)
