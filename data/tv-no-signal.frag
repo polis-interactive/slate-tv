@@ -91,7 +91,7 @@ void main(void)
     }
 
     // Draw 7 smaller rectangle
-    if (uv.y > 0.2 && uv.y < 0.25) {
+    if (uv.y >= 0.2 && uv.y <= 0.25) {
         if (uv.x >= l*0.0 && uv.x < l*1.0) color = vec3(0, 0, 1); // blue
         // if (uv.x < l*2.0) color = vec3(0, 0, 0); // black -- don't need it because background is black
         if (uv.x >= l*2.0 && uv.x < l*3.0) color = vec3(1, 0, 1); // pink
