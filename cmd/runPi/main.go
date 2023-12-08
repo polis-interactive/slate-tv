@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/polis-interactive/slate-tv/data"
 	"github.com/polis-interactive/slate-tv/internal/application"
 	"github.com/polis-interactive/slate-tv/internal/domain"
 	"github.com/polis-interactive/slate-tv/internal/util"
@@ -15,34 +16,19 @@ import (
 
 func main() {
 	conf := &application.Config{
-		GridDefinition: util.GridDefinition{
-			Rows:         3,
-			Columns:      11,
-			LedPerCell:   8,
-			LedPerScoot:  2,
-			RowExtension: 0,
+		LightingConfig: &application.LightingConfig{
+			BoardConfiguration:  data.BoardConfiguration,
+			DisallowedPositions: data.BoardDisallowedPositions,
 		},
 		ControlConfig: &application.ControlConfig{
-			ControlType:    domain.ControlTypes.ADC,
+			ControlType:    domain.ControlTypes.NONE,
 			InputTolerance: 0.001,
 		},
 		AdcConfig: &application.AdcConfig{
 			InputPins: []domain.InputPin{
 				{
-					InputType: domain.InputTypes.BRIGHTNESS,
+					InputType: domain.InputTypes.INPUT1,
 					Pin:       ads1x15.Channel0,
-				},
-				{
-					InputType: domain.InputTypes.SPEED,
-					Pin:       ads1x15.Channel1,
-				},
-				{
-					InputType: domain.InputTypes.PROGRAM,
-					Pin:       ads1x15.Channel2,
-				},
-				{
-					InputType: domain.InputTypes.VALUE,
-					Pin:       ads1x15.Channel3,
 				},
 			},
 			ReadFrequency: physic.Hertz * 33,
@@ -66,6 +52,9 @@ func main() {
 			GpioPin:   util.GpioPinTypes.GPIO18,
 			StripType: util.StripTypes.WS2811RGB,
 			Gamma:     1.2,
+		},
+		InputTypes: []domain.InputType{
+			domain.InputTypes.INPUT1,
 		},
 	}
 
