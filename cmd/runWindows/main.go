@@ -26,7 +26,7 @@ func main() {
 		},
 		GraphicsConfig: &application.GraphicsConfig{
 			ShaderFiles: []string{
-				"basic",
+				"basic", "checkerboard", "stripe-wheel-spread", "bar-hoppin", "tv-no-signal",
 			},
 			ReloadOnUpdate: true,
 			DisplayOutput:  true,

@@ -29,7 +29,7 @@ void main(void) {
     float speed = 0.5;
     float scale = 0.7;
     float brightness = 0.15;
-    float contrast = 1.0;
+    float contrast = 1.5;
 
     float t1 = time * speed;
     // uv should be the 0-1 uv of texture...
