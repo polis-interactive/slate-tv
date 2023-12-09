@@ -26,10 +26,10 @@ uniform vec2 resolution;
 void main(void) {
 
     float gamma = 3.25;
-    float speed = 0.5;
+    float speed = 0.35;
     float scale = 0.7;
-    float brightness = 0.15;
-    float contrast = 1.5;
+    float brightness = 0.3;
+    float contrast = 1.25;
 
     float t1 = time * speed;
     // uv should be the 0-1 uv of texture...
