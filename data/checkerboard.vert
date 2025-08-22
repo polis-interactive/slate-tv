@@ -1,21 +1,7 @@
+#version 330
 
-#ifdef GL_ES
-
-precision highp float;
-#define IN attribute
-#define OUT varying
-#define TEXTURE texture2D
-
-#else
-
-#define IN attribute
-#define OUT out
-#define TEXTURE texture
-
-#endif
-
-attribute vec4 vPosition;
+in vec2 vPosition;
 
 void main() {
-  gl_Position = vPosition;
+    gl_Position = vec4(vPosition, 0.0, 1.0);
 }
