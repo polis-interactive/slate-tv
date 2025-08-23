@@ -1,3 +1,4 @@
+import argparse
 from typing import List
 
 from pathlib import Path
@@ -27,7 +28,7 @@ BOARD_DISALLOWED_POSITIONS: List[Point] = []
 LIGHTS, UNIVERSES = generate_lights_from_boards(BOARD_CONFIGURATION, BOARD_DISALLOWED_POSITIONS)
 
 out_w, out_h = 14, 14
-pixel_size = 33
+pixel_size = 1
 
 screen_w, screen_h = out_w * pixel_size, out_h * pixel_size
 
@@ -167,7 +168,46 @@ class MainWindow(moderngl_window.WindowConfig):
         self.last_frame_ts = render_time
 
 
+def parse_args():
+
+    parser = argparse.ArgumentParser(description="Slate-TV  CLI arguments")
+
+    # window option
+    parser.add_argument(
+        "--window",
+        choices=["glfw", "headless"],
+        default="headless",
+        help="Window backend (default: headless)"
+    )
+
+    # pixel_size option (int in range 1–100)
+    parser.add_argument(
+        "--pixel_size",
+        type=int,
+        choices=range(1, 101),
+        default=1,
+        metavar="[1-100]",
+        help="Pixel size (1–100, default: 1)"
+    )
+
+    # debug option (bool flag)
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        default=False,
+        help="Enable debug mode"
+    )
+
+    return parser.parse_args()
+
 
 
 if __name__ == "__main__":
-    moderngl_window.run_window_config(MainWindow, args=("--window", "glfw"))
+    args = parse_args()
+    cli_args = (
+        "--window", args.window,
+        "--size", args.pixel_size
+    )
+    if args.debug:
+        cli_args += ("--debug",)
+    moderngl_window.run_window_config(MainWindow, args=("--window", "headless"))
