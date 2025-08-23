@@ -1,0 +1,34 @@
+[Unit]
+Description=Slate TV headless app
+After=network.target
+Wants=network.target
+
+[Service]
+# Run as the normal user
+User=polis
+Group=polis
+WorkingDirectory=/home/polis/slate-tv
+
+# If you made /etc/default/slate-tv, load it:
+# EnvironmentFile=-/etc/default/slate-tv
+
+# If you need extra PATH entries (e.g., ~/.local/bin), add them:
+# Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/polis/.local/bin
+
+# Run with a virtual X server (auto-pick display with -a)
+# Tweak screen size/depth if needed
+ExecStart=/usr/bin/xvfb-run /home/polis/.local/bin/uv run main.py
+
+# Make restarts resilient
+Restart=always
+RestartSec=5
+
+# Useful defaults
+StandardOutput=journal
+StandardError=journal
+
+# Give it a little time to stop cleanly
+TimeoutStopSec=15
+
+[Install]
+WantedBy=multi-user.target
